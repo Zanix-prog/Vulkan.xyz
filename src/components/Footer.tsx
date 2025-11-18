@@ -1,9 +1,6 @@
 const Footer = () => {
   const socialLinks = [
-    { name: "Discord", icon: "💬", href: "#" },
-    { name: "Twitter", icon: "🐦", href: "#" },
-    { name: "Twitch", icon: "📺", href: "#" },
-    { name: "YouTube", icon: "▶️", href: "#" },
+    { name: "Discord", icon: "💬", href: "https://discord.gg/5jNUc9fU8E" },
   ];
 
   return (
