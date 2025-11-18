@@ -1,0 +1,290 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* VULKANS Design System - Dark Gaming Aesthetic */
+    
+    /* Core dark colors */
+    --background: 240 10% 5%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 8% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 8% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Gaming purple primary */
+    --primary: 270 80% 60%;
+    --primary-foreground: 0 0% 98%;
+    
+    /* Deep purple accent */
+    --secondary: 260 70% 50%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 10% 12%;
+    --muted-foreground: 0 0% 60%;
+
+    /* Vibrant purple accent */
+    --accent: 280 85% 65%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 10% 18%;
+    --input: 240 10% 12%;
+    --ring: 270 80% 60%;
+
+    --radius: 0.75rem;
+
+    /* Custom gaming gradients */
+    --gradient-gaming: linear-gradient(135deg, hsl(270 80% 60%) 0%, hsl(280 85% 65%) 50%, hsl(290 75% 55%) 100%);
+    --gradient-dark: linear-gradient(135deg, hsl(240 10% 5%) 0%, hsl(260 15% 10%) 100%);
+    --gradient-holographic: linear-gradient(135deg, hsl(270 80% 60%) 0%, hsl(280 85% 65%) 50%, hsl(200 70% 50%) 100%);
+    
+    /* Glow effects */
+    --glow-primary: 0 0 30px hsl(270 80% 60% / 0.6);
+    --glow-secondary: 0 0 30px hsl(280 85% 65% / 0.6);
+    --glow-strong: 0 0 60px hsl(270 80% 60% / 0.9);
+    
+    /* Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .dark {
+    --background: 240 10% 5%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 8% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 8% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 270 80% 60%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 260 70% 50%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 10% 12%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 280 85% 65%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 10% 18%;
+    --input: 240 10% 12%;
+    --ring: 270 80% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Glassmorphic holographic cards */
+  .glass-card {
+    @apply bg-card/40 backdrop-blur-xl border border-border/50;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  /* Neon glow text */
+  .text-glow-primary {
+    text-shadow: var(--glow-primary);
+  }
+
+  .text-glow-secondary {
+    text-shadow: var(--glow-secondary);
+  }
+
+  .text-glow-strong {
+    text-shadow: var(--glow-strong);
+  }
+
+  /* Animated gradient backgrounds */
+  .bg-gradient-gaming {
+    background: var(--gradient-gaming);
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .bg-gradient-dark {
+    background: var(--gradient-dark);
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .bg-gradient-holographic {
+    background: var(--gradient-holographic);
+    background-size: 200% 200%;
+    animation: gradient-shift 10s ease infinite;
+  }
+
+  /* Particle background */
+  .particle-bg {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .particle-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, hsl(270 80% 60% / 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, hsl(280 85% 65% / 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, hsl(260 70% 50% / 0.1) 0%, transparent 50%);
+    animation: particle-float 20s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  /* 3D Transform effects */
+  .transform-3d {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Holographic border effect */
+  .holographic-border {
+    position: relative;
+    border: 1px solid transparent;
+  }
+
+  .holographic-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: var(--gradient-holographic);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: gradient-shift 6s ease infinite;
+  }
+
+  /* Scanline effect */
+  .scanline {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scanline::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      transparent 100%
+    );
+    animation: scanline-move 8s linear infinite;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  /* Animation keyframes */
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes particle-float {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(30px, -30px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+  }
+
+  @keyframes scanline-move {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(270 80% 60% / 0.6);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(270 80% 60% / 0.9);
+    }
+  }
+
+  @keyframes rotate-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .animate-rotate-slow {
+    animation: rotate-slow 20s linear infinite;
+  }
+}
